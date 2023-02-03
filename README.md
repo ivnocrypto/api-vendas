@@ -1,4 +1,4 @@
-# api-vendas
+# Api-Vendas
 
 Construção de uma aplicação backend para gestão de vendas com funcionalidades para criação de cadastro de produtos, cadastro de clientes, pedidos de compras e uma completa gestão de usuários da aplicação, com autenticação via Token JWT, recuperação de senha por email, atualização de perfil, atualização de avatar, e muito mais. Através do TypeORM implementaremos Entidades e Repositórios para cada recurso a ser consumido na API.
 
@@ -8,7 +8,7 @@ Aplicaremos conceitos de boas práticas e qualidade no código, introduzindo rec
 
 
 
-# Principais recursos que implementaremos no projeto:
+# Principais recursos implementados no projeto:
 
 
 
@@ -51,7 +51,7 @@ Deploy em Produção na Digital Ocean
 
 
 
-# Principais tecnologias que utilizaremos para desenvolvimento da API: 
+# Principais tecnologias que utilizadas para desenvolvimento da API: 
 
 
 Node.js, Express, Typescript, TypeORM, Postgres através de container Docker, Redis através de container Docker, Amazon S3, Amazon SES, etc.
