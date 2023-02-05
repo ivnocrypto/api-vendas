@@ -8,7 +8,7 @@ Aplicaremos conceitos de boas práticas e qualidade no código, introduzindo rec
 
 
 
-# Principais recursos implementados no projeto:
+## Principais recursos implementados no projeto:
 
 
 
@@ -51,7 +51,7 @@ Deploy em Produção na Digital Ocean
 
 
 
-# Principais tecnologias utilizadas para desenvolvimento da API: 
+## Principais tecnologias utilizadas para desenvolvimento da API: 
 
 
 Node.js, Express, Typescript, TypeORM, Postgres através de container Docker, Redis através de container Docker, Amazon S3, Amazon SES, etc.
