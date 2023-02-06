@@ -18,15 +18,15 @@ class CreateUserService {
       throw new AppError('Email address already used.');
     }
 
-    const product = usersRepository.create({
+    const user = usersRepository.create({
       name,
       email,
       password,
     });
 
-    await usersRepository.save(product);
+    await usersRepository.save(user);
 
-    return product;
+    return user;
   }
 }
 
