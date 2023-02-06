@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import { compare, hash } from 'bcryptjs';
+import { compare } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
@@ -10,7 +10,7 @@ interface IRequest {
 }
 
 class CreateSessionsService {
-  public async execute({ email, password }: IRequest): Promise<IResponse> {
+  public async execute({ email, password }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findByEmail(email);
 
