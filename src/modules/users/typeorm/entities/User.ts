@@ -17,10 +17,10 @@ class User {
   @Column()
   email: string;
 
-  @Column('int')
+  @Column()
   password: string;
 
-  @Column('int')
+  @Column()
   avatar: string;
 
   @CreateDateColumn()
