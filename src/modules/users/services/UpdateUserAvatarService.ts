@@ -1,46 +1,37 @@
 import AppError from '@shared/errors/AppError';
-import { compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
-import authConfig from '@config/auth';
+import path from 'path';
+import fs from 'fs';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
+import uploadConfig from '@config/upload';
 
 interface IRequest {
-  email: string;
-  password: string;
+  user_id: string;
+  avatarFilename: string;
 }
 
-interface IResponse {
-  user: User;
-  token: string;
-}
-
-class CreateSessionsService {
-  public async execute({ email, password }: IRequest): Promise<IResponse> {
+class UpdateUserAvatarService {
+  public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
-    const user = await usersRepository.findByEmail(email);
+
+    const user = await usersRepository.findById(user_id);
 
     if (!user) {
-      throw new AppError('Incorrect email/password combination.', 401);
+      throw new AppError('User not found.');
     }
-
-    const passwordConfirmed = await compare(password, user.password);
-
-    if (!passwordConfirmed) {
-      throw new AppError('Incorrect email/password combination.', 401);
+    if (user.avatar) {
+      const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
+      const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
+      if (userAvatarFileExists) {
+        await fs.promises.unlink(userAvatarFilePath);
+      }
     }
+    user.avatar = avatarFilename;
 
-    const token = sign({}, authConfig.jwt.secret, {
-      subject: user.id,
-      expiresIn: authConfig.jwt.expireIn,
-    });
-
-    return {
-      user,
-      token,
-    };
+    await usersRepository.save(user);
+    return user;
   }
 }
 
-export default CreateSessionsService;
+export default UpdateUserAvatarService;
