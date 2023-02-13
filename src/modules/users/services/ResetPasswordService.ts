@@ -33,7 +33,7 @@ class ResetPasswordService {
       throw new AppError('Token expired.');
     }
 
-    user.password = password;
+    user.password = await hash(password, 8);
   }
 }
 
