@@ -3,7 +3,7 @@ import { getCustomRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 import { isAfter, addHours } from 'date-fns';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
-import UserTokensRepository from '../typeorm/repositories/UserTokensRepository';
+import UserTokensRepository from '../typeorm/repositories/UsersTokensRepository';
 
 interface IRequest {
   token: string;
