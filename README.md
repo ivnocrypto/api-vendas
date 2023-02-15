@@ -54,13 +54,21 @@ Deploy em Produção na Digital Ocean
 * Principais tecnologias utilizadas para desenvolvimento da API: 
 #
 
-Node.js 
-Express 
-Typescript 
-TypeORM 
-Postgres através de container Docker 
+Node.js
+
+Express
+
+Typescript
+
+TypeORM
+
+Postgres através de container Docker
+
 Redis através de container Docker
+
 Amazon S3
+
 Amazon SES 
+
 etc.
 
