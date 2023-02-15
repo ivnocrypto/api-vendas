@@ -6,7 +6,7 @@ interface ISendMail {
 }
 
 export default class EtherealMail {
-  static async sendmail({ to, body }: ISendMail): Promise<void> {
+  static async sendMail({ to, body }: ISendMail): Promise<void> {
     const account = await nodemailer.createTestAccount();
 
     const transporter = nodemailer.createTransport({
@@ -18,5 +18,14 @@ export default class EtherealMail {
         pass: account.pass,
       },
     });
+    const message = await transporter.sendMail({
+      from: 'equipe@apivendas.com',
+      to,
+      subject: 'Recuperação de senha',
+      text: body,
+    });
+
+    console.log('Message sent: %s', message.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
   }
 }
