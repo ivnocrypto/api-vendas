@@ -7,9 +7,9 @@ Construção de uma aplicação backend para gestão de vendas com funcionalidad
 Aplicaremos conceitos de boas práticas e qualidade no código, introduzindo recursos como Design Patterns, Domain Driven Design (DDD) e Princípios SOLID, além de introduzir Testes Automatizados com o framework Jest.
 
 
-
-### - Principais recursos implementados no projeto:
-
+#
+* Principais recursos implementados no projeto:
+#
 
 
 API Restful
@@ -50,9 +50,25 @@ Deploy em Produção na Digital Ocean
 
 
 
+#
+* Principais tecnologias utilizadas para desenvolvimento da API: 
+#
 
-### - Principais tecnologias utilizadas para desenvolvimento da API: 
+Node.js
 
+Express
 
-Node.js, Express, Typescript, TypeORM, Postgres através de container Docker, Redis através de container Docker, Amazon S3, Amazon SES, etc.
+Typescript
+
+TypeORM
+
+Postgres através de container Docker
+
+Redis através de container Docker
+
+Amazon S3
+
+Amazon SES 
+
+etc.
 
