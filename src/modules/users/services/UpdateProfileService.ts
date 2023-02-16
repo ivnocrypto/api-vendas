@@ -12,7 +12,13 @@ interface IRequest {
 }
 
 class UpdateProfileService {
-  public async execute({ user_id }: IRequest): Promise<User> {
+  public async execute({
+    user_id,
+    name,
+    email,
+    password,
+    old_password,
+  }: IRequest): Promise<User> {
     const userRepository = getCustomRepository(UsersRepository);
 
     const user = await userRepository.findById(user_id);
@@ -21,6 +27,11 @@ class UpdateProfileService {
       throw new AppError('User not found.');
     }
 
+    const userUpdateEmail = await userRepository.findByEmail(email);
+
+    if (userUpdateEmail && userUpdateEmail.id !== user_id) {
+      throw new AppError('There is already one user with this email.');
+    }
     return user;
   }
 }
