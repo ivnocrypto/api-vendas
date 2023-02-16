@@ -6,6 +6,7 @@ import UsersRepository from '../typeorm/repositories/UsersRepository';
 interface IRequest {
   user_id: string;
 }
+
 class ShowProfileService {
   public async execute({ user_id }: IRequest): Promise<User> {
     const userRepository = getCustomRepository(UsersRepository);
@@ -13,7 +14,7 @@ class ShowProfileService {
     const user = await userRepository.findById(user_id);
 
     if (!user) {
-      throw new AppError('User not found');
+      throw new AppError('User not found.');
     }
 
     return user;
