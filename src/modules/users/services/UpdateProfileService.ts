@@ -5,9 +5,13 @@ import UsersRepository from '../typeorm/repositories/UsersRepository';
 
 interface IRequest {
   user_id: string;
+  name: string;
+  email: string;
+  password: string;
+  old_password: string;
 }
 
-class ShowProfileService {
+class UpdateProfileService {
   public async execute({ user_id }: IRequest): Promise<User> {
     const userRepository = getCustomRepository(UsersRepository);
 
@@ -21,4 +25,4 @@ class ShowProfileService {
   }
 }
 
-export default ShowProfileService;
+export default UpdateProfileService;
