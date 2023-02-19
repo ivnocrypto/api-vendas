@@ -1,3 +1,4 @@
+import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import CustomersController from '../controllers/CustomersController';
@@ -5,7 +6,8 @@ import CustomersController from '../controllers/CustomersController';
 const customersRouter = Router();
 const customersController = new CustomersController();
 
-customersRouter.get('/', customersController.index);
+customersRouter.use(isAuthenticated),
+  customersRouter.get('/', customersController.index);
 
 customersRouter.get(
   '/:id',
