@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import ProductController from '../controllers/ProductsController';
+import ProductsController from '../controllers/ProductsController';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 const productsRouter = Router();
-const productsController = new ProductController();
+const productsController = new ProductsController();
 
 productsRouter.get('/', productsController.index);
 
@@ -41,7 +41,6 @@ productsRouter.put(
       id: Joi.string().uuid().required(),
     },
   }),
-
   productsController.update,
 );
 
