@@ -1,60 +1,37 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import { compare, hash } from 'bcryptjs';
-import User from '../typeorm/entities/User';
-import UsersRepository from '../typeorm/repositories/UsersRepository';
+import Customer from '../typeorm/entities/Customer';
+import CustomersRepository from '../typeorm/repositories/CustomersRepository';
 
 interface IRequest {
-  user_id: string;
+  id: string;
   name: string;
   email: string;
-  password?: string;
-  old_password?: string;
 }
 
-class UpdateProfileService {
-  public async execute({
-    user_id,
-    name,
-    email,
-    password,
-    old_password,
-  }: IRequest): Promise<User> {
-    const userRepository = getCustomRepository(UsersRepository);
+class UpdateCustomerService {
+  public async execute({ id, name, email }: IRequest): Promise<Customer> {
+    const customersRepository = getCustomRepository(CustomersRepository);
 
-    const user = await userRepository.findById(user_id);
+    const customer = await customersRepository.findById(id);
 
-    if (!user) {
-      throw new AppError('User not found.');
+    if (!customer) {
+      throw new AppError('Customer not found.');
     }
 
-    const userUpdateEmail = await userRepository.findByEmail(email);
+    const customerExists = await customersRepository.findByEmail(email);
 
-    if (userUpdateEmail && userUpdateEmail.id !== user_id) {
-      throw new AppError('There is already one user with this email.');
+    if (customerExists && email !== customer.email) {
+      throw new AppError('There is already one customer with this email.');
     }
 
-    if (password && !old_password) {
-      throw new AppError('Old password is required.');
-    }
+    customer.name = name;
+    customer.email = email;
 
-    if (password && old_password) {
-      const checkOldPassword = await compare(old_password, user.password);
+    await customersRepository.save(customer);
 
-      if (!checkOldPassword) {
-        throw new AppError('Old password does not match.');
-      }
-
-      user.password = await hash(password, 8);
-    }
-
-    user.name = name;
-    user.email = email;
-
-    await userRepository.save(user);
-
-    return user;
+    return customer;
   }
 }
 
-export default UpdateProfileService;
+export default UpdateCustomerService;
