@@ -12,6 +12,16 @@ class ProductRepository extends Repository<Product> {
 
     return product;
   }
+
+  public async findAllByIds(name: string): Promise<Product | undefined> {
+    const product = this.findOne({
+      where: {
+        name,
+      },
+    });
+
+    return product;
+  }
 }
 
 export default ProductRepository;
