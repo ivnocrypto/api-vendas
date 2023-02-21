@@ -1,17 +1,15 @@
-import { EntityRepository, In, Repository } from 'typeorm';
+import { EntityRepository, Repository } from 'typeorm';
 import Order from '../entities/Order';
 
 @EntityRepository(Order)
-class ProductRepository extends Repository<Product> {
-  public async findByName(id: string): Promise<Product | undefined> {
-    const product = await this.findOne({
-      where: {
-        name,
-      },
+class OrdersRepository extends Repository<Order> {
+  public async findByName(id: string): Promise<Order | undefined> {
+    const order = this.findOne(id, {
+      relations: ['order_products', 'customer'],
     });
 
-    return product;
+    return order;
   }
 }
 
-export default ProductRepository;
+export default OrdersRepository;
