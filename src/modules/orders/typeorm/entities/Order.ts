@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import Customer from '@modules/customers/typeorm/entities/Customer';
-import OrdersProducts from './OrdersProduts';
+import OrdersProducts from './OrdersProducts';
 
 @Entity('orders')
 class Order {
@@ -20,7 +20,7 @@ class Order {
   customer: Customer;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.)
-  order_products: OrdersProducts[]
+  order_products: OrdersProducts[];
 
   @CreateDateColumn()
   created_at: Date;
