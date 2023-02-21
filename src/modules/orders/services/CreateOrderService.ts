@@ -23,17 +23,25 @@ class CreateOrderService {
     const productsRepository = getCustomRepository(ProductRepository);
 
     const customerExists = await customersRepository.findById(customer_id);
-
     if (!customerExists) {
       throw new AppError('Could not find any customer with the given id.');
     }
 
-    const existsProduct = await productsRepository.findById(id);
-
-    if (!existsProduct) {
-      throw new AppError('');
+    const existsProducts = await productsRepository.findAllByIds(products);
+    if (!existsProducts.length) {
+      throw new AppError('Could not find any products with the given ids');
     }
-    return;
+
+    const existsProductsIds = existsProducts.map(product => product.id);
+
+    const checkInexistentProducts = products.filter(
+      product => !existsProductsIds.includes(product.id),
+    );
+    if (!checkInexistentProducts.length) {
+      throw new AppError(
+        `Could not find products ${checkInexistentProducts[0].id}.`,
+      );
+    }
   }
 }
 export default CreateOrderService;
