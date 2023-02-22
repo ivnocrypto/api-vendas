@@ -1,4 +1,4 @@
-import {} from 'ioredis';
+import { RedisOptions } from 'ioredis';
 
 export default {
   config: {
