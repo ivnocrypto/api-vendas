@@ -20,7 +20,7 @@ ordersRouter.post(
   celebrate({
     [Segments.BODY]: {
       customer_id: Joi.string().uuid().required(),
-      product: Joi.required(),
+      products: Joi.required(),
     },
   }),
   ordersController.create,
