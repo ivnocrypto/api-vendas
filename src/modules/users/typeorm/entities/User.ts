@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import {} from 'class-transformer';
 
 @Entity('users')
 class User {
