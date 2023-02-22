@@ -31,6 +31,7 @@ app.use(
         message: error.message,
       });
     }
+    // eslint-disable-next-line no-console
     console.log(error);
 
     return response.status(500).json({
