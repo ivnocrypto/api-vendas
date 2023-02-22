@@ -15,4 +15,4 @@ export default {
     },
   },
   driver: 'redis',
-};
+} as ICacheConfig;
