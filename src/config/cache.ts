@@ -1,3 +1,5 @@
+import {} from 'ioredis';
+
 export default {
   config: {
     redis: {
