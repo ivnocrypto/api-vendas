@@ -39,9 +39,9 @@ class CreateOrderService {
       product => !existsProductsIds.includes(product.id),
     );
 
-    if (!checkInexistentProducts.length) {
+    if (checkInexistentProducts.length) {
       throw new AppError(
-        `Could not find products ${checkInexistentProducts[0].id}.`,
+        `Could not find product ${checkInexistentProducts[0].id}.`,
       );
     }
 
@@ -51,7 +51,7 @@ class CreateOrderService {
         product.quantity,
     );
 
-    if (!quantityAvailable.length) {
+    if (quantityAvailable.length) {
       throw new AppError(
         `The quantity ${quantityAvailable[0].quantity} is not available for ${quantityAvailable[0].id}.`,
       );
