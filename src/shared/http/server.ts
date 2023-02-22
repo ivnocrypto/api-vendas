@@ -18,6 +18,7 @@ app.use(routes);
 app.use(errors());
 
 app.use(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (error: Error, request: Request, response: Response, next: NextFunction) => {
     if (error instanceof AppError) {
       return response.status(error.statusCode).json({
@@ -25,6 +26,7 @@ app.use(
         message: error.message,
       });
     }
+    // eslint-disable-next-line no-console
     console.log(error);
 
     return response.status(500).json({
@@ -35,5 +37,6 @@ app.use(
 );
 
 app.listen(3333, () => {
+  // eslint-disable-next-line no-console
   console.log('Server on port 3333!✨');
 });
