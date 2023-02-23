@@ -23,6 +23,11 @@ class UpdateProductService {
     if (!product) {
       throw new AppError('Product not found.', 400);
     }
+
+    const redisCache = new RedisCache();
+
+    await redisCache.invalidate('api-vendas-PRODUCT_LIST');
+
     const productExists = await productsRepository.findByName(name);
 
     if (productExists && name !== product.name) {
