@@ -1,3 +1,4 @@
+import RedisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Customer from '../typeorm/entities/Customer';
@@ -17,10 +18,14 @@ class CreateCustomerService {
       throw new AppError('Email address already used.');
     }
 
+    const redisCache = new RedisCache();
+
     const customer = customersRepository.create({
       name,
       email,
     });
+
+    await redisCache.invalidate('api-vendas-PRODUCT_LIST');
 
     await customersRepository.save(customer);
 
