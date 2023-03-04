@@ -3,5 +3,5 @@ export interface ICustomer {
   name: string;
   email: string;
   created_at: Date;
-  update_at: Date;
+  updated_at: Date;
 }
