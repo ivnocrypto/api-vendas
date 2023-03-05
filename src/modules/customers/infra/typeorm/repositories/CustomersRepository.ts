@@ -9,7 +9,7 @@ class CustomersRepository implements ICustomersRepository {
     this.ormRepository = getRepository(Customer);
   }
   public async findByName(name: string): Promise<Customer | undefined> {
-    const customer = await this.findOne({
+    const customer = await this.ormRepository.findOne({
       where: {
         name,
       },
