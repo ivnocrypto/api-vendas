@@ -1,3 +1,4 @@
+import { ICreateCustomer } from './../../../domain/models/ICreateCustomer';
 import { ICustomersRepository } from './../../../domain/repositories/ICustomersRepository';
 import { getRepository, Repository } from 'typeorm';
 import Customer from '../entities/Customer';
@@ -8,6 +9,14 @@ class CustomersRepository implements ICustomersRepository {
   constructor() {
     this.ormRepository = getRepository(Customer);
   }
+
+  public async create({ name, email }: ICreateCustomer): Promise<Customer> {
+    const customer = this.ormRepository.create({ name, email });
+
+    await this.ormRepository.save(customer);
+    return customer;
+  }
+
   public async findByName(name: string): Promise<Customer | undefined> {
     const customer = await this.ormRepository.findOne({
       where: {
