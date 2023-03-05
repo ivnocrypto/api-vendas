@@ -1,6 +1,6 @@
+import AppError from '@shared/errors/AppError';
 import { ICustomer } from './../domain/models/ICustomer';
 import { ICreateCustomer } from './../domain/models/ICreateCustomer';
-import AppError from '@shared/errors/AppError';
 import { ICustomersRepository } from '../domain/repositories/ICustomersRepository';
 
 class CreateCustomerService {
