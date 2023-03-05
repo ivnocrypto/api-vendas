@@ -22,8 +22,6 @@ class CreateCustomerService {
       email,
     });
 
-    await customersRepository.save(customer);
-
     return customer;
   }
 }
