@@ -1,5 +1,5 @@
+import { ICustomer } from '../models/ICustomer';
+
 export interface ICustomersRepository {
-  name: string;
-  id: string;
-  email: string;
+  findByName(name: string): Promise<ICustomer | undefined>;
 }
