@@ -1,8 +1,13 @@
 import { ICustomersRepository } from './../../../domain/repositories/ICustomersRepository';
-import { EntityRepository, Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 import Customer from '../entities/Customer';
 
 class CustomersRepository implements ICustomersRepository {
+  private ormRepository: Repository<Customer>;
+
+  constructor() {
+    this.ormRepository = getRepository(Customer);
+  }
   public async findByName(name: string): Promise<Customer | undefined> {
     const customer = await this.findOne({
       where: {
