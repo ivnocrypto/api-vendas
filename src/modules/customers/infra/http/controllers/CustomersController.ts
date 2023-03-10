@@ -1,5 +1,5 @@
-import { container } from 'tsyringe';
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import CreateCustomerService from '../../../services/CreateCustomerService';
 import DeleteCustomerService from '../../../services/DeleteCustomerService';
 import ListCustomerService from '../../../services/ListCustomerService';
@@ -8,16 +8,17 @@ import UpdateCustomerService from '../../../services/UpdateCustomerService';
 
 export default class CustomersController {
   public async index(request: Request, response: Response): Promise<Response> {
-    const listCustomer = new ListCustomerService();
+    const listCustomers = container.resolve(ListCustomerService);
 
-    const customer = await listCustomer.execute();
+    const customers = await listCustomers.execute();
 
-    return response.json(customer);
+    return response.json(customers);
   }
+
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const showCustomer = new ShowCustomerService();
+    const showCustomer = container.resolve(ShowCustomerService);
 
     const customer = await showCustomer.execute({ id });
 
@@ -41,7 +42,7 @@ export default class CustomersController {
     const { name, email } = request.body;
     const { id } = request.params;
 
-    const updateCustomer = new UpdateCustomerService();
+    const updateCustomer = container.resolve(UpdateCustomerService);
 
     const customer = await updateCustomer.execute({
       id,
@@ -55,7 +56,7 @@ export default class CustomersController {
   public async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const deleteCustomer = new DeleteCustomerService();
+    const deleteCustomer = container.resolve(DeleteCustomerService);
 
     await deleteCustomer.execute({ id });
 

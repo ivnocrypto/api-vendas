@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Redis from 'ioredis';
 import { RateLimiterRedis } from 'rate-limiter-flexible';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../../shared/errors/AppError';
 
 export default async function rateLimiter(
   request: Request,
@@ -20,7 +20,7 @@ export default async function rateLimiter(
     const limiter = new RateLimiterRedis({
       storeClient: redisClient,
       keyPrefix: 'ratelimit',
-      points: 3,
+      points: 5,
       duration: 1,
     });
 

@@ -4,8 +4,8 @@ import AppError from '../../../shared/errors/AppError';
 import path from 'path';
 import EtherealMail from '../../../config/mail/EtherealMail';
 import { ISendForgotPasswordEmail } from '../domain/models/ISendForgotPasswordEmail';
-import { IUsersRepository } from '../domain/repository/IUsersRepository';
-import { IUserTokensRepository } from '../domain/repository/IUserTokensRepository';
+import { IUsersRepository } from '../domain/repositories/IUsersRepository';
+import { IUserTokensRepository } from '../domain/repositories/IUserTokensRepository';
 import SESMail from '@config/mail/SESMail';
 
 @injectable()

@@ -5,7 +5,7 @@ import { sign, Secret } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import { ICreateSession } from '../domain/models/ICreateSession';
 import { IUserAuthenticated } from '../domain/models/IUserAuthenticated';
-import { IUsersRepository } from '../domain/repository/IUsersRepository';
+import { IUsersRepository } from '../domain/repositories/IUsersRepository';
 
 @injectable()
 class CreateSessionsService {
@@ -32,7 +32,7 @@ class CreateSessionsService {
 
     const token = sign({}, authConfig.jwt.secret as Secret, {
       subject: user.id,
-      expiresIn: authConfig.jwt.expiresIn,
+      expiresIn: authConfig.jwt.expireIn,
     });
 
     return {

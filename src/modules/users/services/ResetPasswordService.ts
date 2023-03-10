@@ -3,8 +3,8 @@ import AppError from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
 import { isAfter, addHours } from 'date-fns';
 import { IResetPassword } from '../domain/models/IResetPassword';
-import { IUsersRepository } from '../domain/repository/IUsersRepository';
-import { IUserTokensRepository } from '../domain/repository/IUserTokensRepository';
+import { IUsersRepository } from '../domain/repositories/IUsersRepository';
+import { IUserTokensRepository } from '../domain/repositories/IUserTokensRepository';
 
 @injectable()
 class ResetPasswordService {
