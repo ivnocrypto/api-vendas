@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { ICustomer } from './../domain/models/ICustomer';
 import { ICreateCustomer } from './../domain/models/ICreateCustomer';
 import { ICustomersRepository } from '../domain/repositories/ICustomersRepository';
