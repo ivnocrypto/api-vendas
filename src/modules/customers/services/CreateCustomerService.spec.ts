@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import CreateCustomerService from './CreateCustomerService';
 import FakeCustomersRepository from '../domain/repositories/fakes/FakeCustomersRepository';
 
