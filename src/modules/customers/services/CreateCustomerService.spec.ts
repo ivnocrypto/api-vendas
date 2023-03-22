@@ -1,7 +1,7 @@
 import CreateCustomerService from './CreateCustomerService';
 import FakeCustomersRepository from '../domain/repositories/fakes/FakeCustomersRepository';
 
-describe('CreateCustomer', () => {
+describe('CreateCustomer', async () => {
   it('should be able to create a new customer', async () => {
     const fakeCustomersRepository = new FakeCustomersRepository();
 
