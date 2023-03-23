@@ -24,6 +24,7 @@ class FakeCustomersRepository implements ICustomersRepository {
     return customer;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public async remove(customer: Customer): Promise<void> {}
 
   public async findAll(): Promise<Customer[] | undefined> {

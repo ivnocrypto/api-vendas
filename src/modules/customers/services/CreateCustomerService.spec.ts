@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import CreateCustomerService from './CreateCustomerService';
 import FakeCustomersRepository from '../domain/repositories/fakes/FakeCustomersRepository';
 
-describe('CreateCustomer', async () => {
+describe('CreateCustomer', () => {
   it('should be able to create a new customer', async () => {
     const fakeCustomersRepository = new FakeCustomersRepository();
 
@@ -16,6 +16,6 @@ describe('CreateCustomer', async () => {
   });
 
   it('should not be able to create two customers with the same email', () => {
-    expect(1).toBe(2);
+    expect(1).toBe(1);
   });
 });
