@@ -22,9 +22,6 @@ describe('CreateCustomer', () => {
   });
 
   it('should not be able to create two customers with the same email', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const createCustomer = new CreateCustomerService(fakeCustomersRepository);
-
     await createCustomer.execute({
       name: 'Ivano GG',
       email: 'ivanoteste@teste.com',
