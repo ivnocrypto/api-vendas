@@ -1,5 +1,5 @@
 import { IShowOrder } from './../domain/models/IShowOrder';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { IOrdersRepository } from '../domain/repositories/IOrdersRepository';
 import { IOrder } from '../domain/models/IOrder';

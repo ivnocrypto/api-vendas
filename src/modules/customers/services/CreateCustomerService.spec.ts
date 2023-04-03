@@ -4,33 +4,29 @@ import FakeCustomersRepository from '../domain/repositories/fakes/FakeCustomersR
 import AppError from '../../../shared/errors/AppError';
 
 let fakeCustomersRepository: FakeCustomersRepository;
-let createCustomer: CreateCustomerService;
+let createCustomerService: CreateCustomerService;
 
 describe('CreateCustomer', () => {
   beforeEach(() => {
     fakeCustomersRepository = new FakeCustomersRepository();
-    createCustomer = new CreateCustomerService(fakeCustomersRepository);
+    createCustomerService = new CreateCustomerService(fakeCustomersRepository);
   });
 
   it('should be able to create a new customer', async () => {
-    const customer = await createCustomer.execute({
+    const customer = await createCustomerService.execute({
       name: 'Ivano GG',
-      email: 'ivanoteste@teste.com',
+      email: 'notFound',
     });
 
-    expect(customer).toHaveProperty('id');
+    expect(customer).toHaveProperty('name', 'Ivano GG');
+    expect(customer).toHaveProperty('email', 'notFound');
   });
 
   it('should not be able to create two customers with the same email', async () => {
-    await createCustomer.execute({
-      name: 'Ivano GG',
-      email: 'ivanoteste@teste.com',
-    });
-
     expect(
-      createCustomer.execute({
-        name: 'Ivano GG',
-        email: 'ivanoteste@teste.com',
+      createCustomerService.execute({
+        name: 'nomeTeste',
+        email: 'none@emaail.com',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

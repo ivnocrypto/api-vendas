@@ -1,30 +1,21 @@
-import { v4 as uuidv4 } from 'uuid';
 import { ICreateCustomer } from '../../models/ICreateCustomer';
 import { ICustomersRepository } from '../ICustomersRepository';
 import Customer from '../../../infra/typeorm/entities/Customer';
 
 class FakeCustomersRepository implements ICustomersRepository {
-  private customers: Customer[] = [];
-
   public async create({ name, email }: ICreateCustomer): Promise<Customer> {
-    const customer = new Customer();
-
-    customer.id = uuidv4();
-    customer.name = name;
-    customer.email = email;
-
-    this.customers.push(customer);
+    const customer = {
+      id: '123456',
+      name,
+      email,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
 
     return customer;
   }
 
   public async save(customer: Customer): Promise<Customer> {
-    const findIndex = this.customers.findIndex(
-      findCustomer => findCustomer.id === customer.id,
-    );
-
-    this.customers[findIndex] = customer;
-
     return customer;
   }
 
@@ -32,21 +23,66 @@ class FakeCustomersRepository implements ICustomersRepository {
   public async remove(customer: Customer): Promise<void> {}
 
   public async findAll(): Promise<Customer[] | undefined> {
-    return undefined;
+    const customer = {
+      id: '123456',
+      name: 'nomeTeste',
+      email: 'email@teste.com',
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
+    return [customer];
   }
 
   public async findByName(name: string): Promise<Customer | undefined> {
-    const customer = this.customers.find(customer => customer.name === name);
+    if (name === 'notFound') {
+      return undefined;
+    }
+
+    const customer = {
+      id: '123456',
+      name,
+      email: 'email@teste.com',
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
     return customer;
   }
 
   public async findById(id: string): Promise<Customer | undefined> {
-    const customer = this.customers.find(customer => customer.id === id);
+    if (id === 'notFound') {
+      return undefined;
+    }
+
+    const customer = {
+      id,
+      name: 'nomeTeste',
+      email: 'email@teste.com',
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
     return customer;
   }
 
   public async findByEmail(email: string): Promise<Customer | undefined> {
-    const customer = this.customers.find(customer => customer.email === email);
+    if (email === 'notFound') {
+      return undefined;
+    }
+
+    const customer = {
+      id: '123456',
+      name: 'nomeTeste',
+      email,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
+    if (email === 'none@email.com') {
+      customer.id = '654321';
+    }
+
     return customer;
   }
 }

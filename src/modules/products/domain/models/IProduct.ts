@@ -1,8 +1,8 @@
-import IOrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
+import IOrdersProducts from '../../../../modules/orders/infra/typeorm/entities/OrdersProducts';
 
 export interface IProduct {
   id: string;
-  order_products: IOrdersProducts[];
+  order_products?: IOrdersProducts[];
   name: string;
   price: number;
   quantity: number;

@@ -6,10 +6,10 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import { pagination } from 'typeorm-pagination';
 import routes from './routes';
-import AppError from '@shared/errors/AppError';
-import '@shared/infra/typeorm';
-import '@shared/container';
-import uploadConfig from '@config/upload';
+import AppError from '../../../shared/errors/AppError';
+import '../typeorm';
+import '../../container';
+import uploadConfig from '../../../config/upload';
 import rateLimiter from './middlewares/rateLimiter';
 
 const app = express();

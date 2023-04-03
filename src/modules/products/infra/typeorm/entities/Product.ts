@@ -1,4 +1,4 @@
-import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
+import OrdersProducts from '../../../../../modules/orders/infra/typeorm/entities/OrdersProducts';
 import {
   Column,
   CreateDateColumn,
@@ -14,7 +14,7 @@ class Product {
   id: string;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.product)
-  order_products: OrdersProducts[];
+  order_products?: OrdersProducts[];
 
   @Column()
   name: string;

@@ -4,8 +4,8 @@ import uploadConfig from '../../../config/upload';
 import { IUpdateUserAvatar } from '../domain/models/IUpdateUserAvatar';
 import { IUser } from '../domain/models/IUser';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
-import S3StorageProvider from '@shared/providers/StorageProvider/S3StorageProvider';
-import DiskStorageProvider from '@shared/providers/StorageProvider/DiskStorageProvider';
+import S3StorageProvider from '../../../shared/providers/StorageProvider/S3StorageProvider';
+import DiskStorageProvider from '../../../shared/providers/StorageProvider/DiskStorageProvider';
 
 @injectable()
 class UpdateUserAvatarService {

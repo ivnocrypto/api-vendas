@@ -1,4 +1,4 @@
-import mailConfig from '@config/mail/mail';
+import mailConfig from '../../../config/mail/mail';
 import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/errors/AppError';
 import path from 'path';
@@ -6,7 +6,7 @@ import EtherealMail from '../../../config/mail/EtherealMail';
 import { ISendForgotPasswordEmail } from '../domain/models/ISendForgotPasswordEmail';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
 import { IUserTokensRepository } from '../domain/repositories/IUserTokensRepository';
-import SESMail from '@config/mail/SESMail';
+import SESMail from '../../../config/mail/SESMail';
 
 @injectable()
 class SendForgotPasswordEmailService {

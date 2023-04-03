@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import aws from 'aws-sdk';
 import HandlebarsMailTemplate from './HandlebarsMailTemplate';
-import mailConfig from '@config/mail/mail';
+import mailConfig from '../../config/mail/mail';
 
 interface IMailContact {
   name: string;

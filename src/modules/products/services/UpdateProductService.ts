@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import Product from '../infra/typeorm/entities/Product';
 import { IUpdateProduct } from './../domain/models/IUpdateProduct';
-import redisCache from '@shared/cache/RedisCache';
+import redisCache from '../../../shared/cache/RedisCache';
 import { IProductsRepository } from '../domain/repositories/IProductsRepository';
 
 @injectable()
