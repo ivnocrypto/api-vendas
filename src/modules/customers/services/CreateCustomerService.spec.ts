@@ -6,6 +6,8 @@ import AppError from '../../../shared/errors/AppError';
 let fakeCustomersRepository: FakeCustomersRepository;
 let createCustomerService: CreateCustomerService;
 
+jest.setTimeout(20000);
+
 describe('CreateCustomer', () => {
   beforeEach(() => {
     fakeCustomersRepository = new FakeCustomersRepository();

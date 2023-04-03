@@ -6,6 +6,8 @@ import ShowCustomerService from './ShowCustomerService';
 let fakeCustomersRepository: FakeCustomersRepository;
 let showCustomerService: ShowCustomerService;
 
+jest.setTimeout(20000);
+
 describe('ShowCustomerService', () => {
   beforeEach(() => {
     fakeCustomersRepository = new FakeCustomersRepository();

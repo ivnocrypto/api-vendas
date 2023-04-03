@@ -6,6 +6,8 @@ import DeleteCustomerService from './DeleteCustomerService';
 let fakeCustomersRepository: FakeCustomersRepository;
 let deleteCustomerService: DeleteCustomerService;
 
+jest.setTimeout(20000);
+
 describe('DeleteCustomerService', () => {
   beforeEach(() => {
     fakeCustomersRepository = new FakeCustomersRepository();

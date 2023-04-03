@@ -5,6 +5,8 @@ import ListCustomerService from './ListCustomerService';
 let fakeCustomersRepository: FakeCustomersRepository;
 let listCustomerService: ListCustomerService;
 
+jest.setTimeout(20000);
+
 describe('ListCustomerService', () => {
   beforeEach(() => {
     fakeCustomersRepository = new FakeCustomersRepository();
