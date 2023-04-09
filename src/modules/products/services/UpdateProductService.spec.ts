@@ -38,10 +38,21 @@ describe('UpdateProductService', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('not should be able to update two Products with the same id', async () => {
+  it('not should be able to update two Products with the if products no exists', async () => {
     expect(
       updateProductService.execute({
         id: 'notFound',
+        name: 'guitarra',
+        price: 1000,
+        quantity: 100,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('not should be able to update two Products with the other name already in use', async () => {
+    expect(
+      updateProductService.execute({
+        id: 'toBeChange',
         name: 'guitarra',
         price: 1000,
         quantity: 100,

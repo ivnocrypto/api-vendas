@@ -4,15 +4,13 @@ import User from '../../../infra/typeorm/entities/User';
 import { IUser } from '../../models/IUser';
 
 class FakeUsersRepository implements IUsersRepository {
-  private users: User[] = [];
-
   public async user({ name, email, password }: ICreateUser): Promise<User> {
     const user = {
       id: '123456',
       name,
       email,
       password,
-      avatar: 'avatar',
+      avatar: 'avatar_url',
       getAvatarUrl: function () {
         if (!this.avatar) {
           return null;
@@ -68,7 +66,7 @@ class FakeUsersRepository implements IUsersRepository {
 
     const user = {
       id: '123456',
-      name: 'notFound',
+      name: 'Jao teste',
       email: 'example@example.com',
       password: 'password',
       avatar: 'avatar_url',
@@ -86,7 +84,7 @@ class FakeUsersRepository implements IUsersRepository {
 
     const user = {
       id: '123456',
-      name: 'notFound',
+      name: 'Jao teste',
       email: 'example@example.com',
       password: 'password',
       avatar: 'avatar_url',
@@ -98,17 +96,21 @@ class FakeUsersRepository implements IUsersRepository {
   }
 
   public async create(data: ICreateUser): Promise<IUser> {
-    const user = new User();
-
-    Object.assign(user, { id: '123456' }, data);
-
-    this.users.push(user);
+    const user = {
+      id: '123456',
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      avatar: 'avatar_url',
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
 
     return user;
   }
 
   public async save(user: IUser): Promise<IUser> {
-    throw new Error('Method not implemented.');
+    return user;
   }
 }
 

@@ -17,6 +17,8 @@ class UpdateProductService {
     price,
     quantity,
   }: IUpdateProduct): Promise<Product> {
+    await redisCache.invalidate('api-vendas-PRODUCT_LIST');
+
     const product = await this.productsRepository.findById(id);
 
     if (!product) {

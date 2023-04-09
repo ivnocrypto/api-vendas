@@ -53,6 +53,9 @@ class FakeProductsRepository implements IProductsRepository {
       created_at: new Date(),
       updated_at: new Date(),
     };
+    if (id === 'toBeChange') {
+      product.name = 'other';
+    }
 
     return product;
   }
