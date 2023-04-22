@@ -21,15 +21,15 @@ describe('CreateUser', () => {
   });
 
   it('should be able to create a new User', async () => {
-    const User = await createUserService.execute({
+    const user = await createUserService.execute({
       name: 'Ivano GG',
       email: 'notFound',
       password: '123456',
     });
 
-    expect(User).toHaveProperty('name', 'Ivano GG');
-    expect(User).toHaveProperty('email', 'notFound');
-    expect(User).toHaveProperty('password', '123456');
+    expect(user).toHaveProperty('name', 'Ivano GG');
+    expect(user).toHaveProperty('email', 'notFound');
+    expect(user).toHaveProperty('password', '123456');
   });
 
   it('should not be able to create two Users with the same email', async () => {

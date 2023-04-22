@@ -18,4 +18,14 @@ describe('ResetPasswordService', () => {
       fakeUserTokensRepository,
     );
   });
+
+  it('should be able to reset a password', async () => {
+    const userToken = await resetPasswordService.execute({
+      token: 'Ivano GG',
+      password: '123456',
+    });
+
+    expect(userToken).toHaveProperty('token', 'Ivano GG');
+    expect(userToken).toHaveProperty('password', 'notFound');
+  });
 });
