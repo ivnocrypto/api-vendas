@@ -1,7 +1,8 @@
-import { getRepository, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import Order from '../entities/Order';
 import { ICreateOrder } from '../../../../../modules/orders/domain/models/ICreateOrder';
 import { IOrdersRepository } from '../../../../../modules/orders/domain/repositories/IOrdersRepository';
+import { dataSource } from '../../../../../shared/infra/typeorm';
 
 class OrdersRepository implements IOrdersRepository {
   private ormRepository: Repository<Order>;

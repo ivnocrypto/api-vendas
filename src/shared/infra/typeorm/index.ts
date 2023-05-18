@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 
+// entidades
 import User from '../../../modules/users/infra/typeorm/entities/User';
 import UserToken from '../../../modules/users/infra/typeorm/entities/UserToken';
 import Customer from '../../../modules/customers/infra/typeorm/entities/Customer';
@@ -7,6 +8,7 @@ import Order from '../../../modules/orders/infra/typeorm/entities/Order';
 import OrdersProducts from '../../../modules/orders/infra/typeorm/entities/OrdersProducts';
 import Product from '../../../modules/products/infra/typeorm/entities/Product';
 
+// migrações
 import { CreateProducts1657632565103 } from './migrations/1675541043779-CreateProducts';
 import { CreateUsers1675691379651 } from './migrations/1675691379651-CreateUsers';
 import { CreateUsersTokens1675914445952 } from './migrations/1675914445952-CreateUsersTokens';
