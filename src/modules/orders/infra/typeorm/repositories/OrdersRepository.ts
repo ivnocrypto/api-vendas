@@ -8,7 +8,7 @@ class OrdersRepository implements IOrdersRepository {
   private ormRepository: Repository<Order>;
 
   constructor() {
-    this.ormRepository = getRepository(Order);
+    this.ormRepository = dataSource.getRepository(Order);
   }
 
   public async findById(id: string): Promise<Order | undefined> {
