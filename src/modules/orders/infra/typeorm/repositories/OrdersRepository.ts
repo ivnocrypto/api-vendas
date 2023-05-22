@@ -11,8 +11,9 @@ class OrdersRepository implements IOrdersRepository {
     this.ormRepository = dataSource.getRepository(Order);
   }
 
-  public async findById(id: string): Promise<Order | undefined> {
-    const order = this.ormRepository.findOne(id, {
+  public async findById(id: string): Promise<Order | null> {
+    const order = this.ormRepository.findOne({
+      where: { id },
       relations: ['order_products', 'customer'],
     });
 
